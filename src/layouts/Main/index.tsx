@@ -23,6 +23,80 @@ import React, { useEffect, useState } from "react";
 import { Button } from "@/components/ui/Button";
 import { StatusBadge, type StatusType } from "@/components/ui/StatusBadge";
 
+type MenuItem = {
+  icon: LucideIcon;
+  title: string;
+  desc: string;
+  status?: string;
+};
+
+const MENU_ITEMS: { title: string; items: MenuItem[] }[] = [
+  {
+    title: "Protocol",
+    items: [
+      {
+        icon: Activity,
+        title: "Stream",
+        desc: "Private payroll & token vesting.",
+        status: "in-development",
+      },
+      {
+        icon: RefreshCcw,
+        title: "Lend",
+        desc: "Zero-knowledge collateralized loans.",
+        status: "in-development",
+      },
+      {
+        icon: Layers,
+        title: "Trade",
+        desc: "Dark pool swaps on Solana.",
+        status: "planned",
+      },
+      {
+        icon: Wallet,
+        title: "Earn",
+        desc: "Shielded liquidity provision.",
+        status: "planned",
+      },
+    ],
+  },
+  {
+    title: "Developers",
+    items: [
+      {
+        icon: Terminal,
+        title: "Documentation",
+        desc: "Integrate the Zenlok SDK.",
+      },
+      {
+        icon: FileCode,
+        title: "Contracts",
+        desc: "SPL Program Addresses.",
+      },
+      {
+        icon: Key,
+        title: "Audits",
+        desc: "Security reports by OtterSec.",
+      },
+    ],
+  },
+  {
+    title: "Governance",
+    items: [
+      {
+        icon: Globe,
+        title: "DAO",
+        desc: "Realms Governance.",
+      },
+      {
+        icon: Database,
+        title: "Treasury",
+        desc: "On-chain asset holdings.",
+      },
+    ],
+  },
+];
+
 const NavDropdown = ({
   title,
   children,
@@ -133,6 +207,57 @@ const StatsTicker = () => (
   </div>
 );
 
+const MobileNavDropdown = ({
+  title,
+  items,
+}: {
+  title: string;
+  items: MenuItem[];
+}) => {
+  const [isOpen, setIsOpen] = useState(false);
+
+  return (
+    <div className="border-b pb-6 border-zinc-800">
+      <button
+        type="button"
+        onClick={() => setIsOpen(!isOpen)}
+        className="flex items-center justify-between w-full py-6 text-4xl font-light uppercase font-sans text-left"
+      >
+        {title}
+        <ChevronDown
+          className={`w-6 h-6 transition-transform ${isOpen ? "rotate-180" : ""}`}
+        />
+      </button>
+      {isOpen && (
+        <div className="space-y-4">
+          {items.map((item) => (
+            <a
+              key={item.title}
+              href="#"
+              className="flex items-start gap-4 p-2 hover:bg-zinc-900/50 rounded-lg transition-colors"
+            >
+              <div className="mt-1 text-zinc-500">
+                <item.icon size={20} />
+              </div>
+              <div>
+                <div className="text-lg font-medium text-zinc-300 mb-1 flex items-center gap-2">
+                  {item.title}
+                  {item.status && (
+                    <StatusBadge status={item.status as StatusType} />
+                  )}
+                </div>
+                <p className="text-xs text-zinc-500 font-mono uppercase">
+                  {item.desc}
+                </p>
+              </div>
+            </a>
+          ))}
+        </div>
+      )}
+    </div>
+  );
+};
+
 export default function MainLayout({
   children,
 }: Readonly<{
@@ -165,61 +290,19 @@ export default function MainLayout({
 
           {/* Desktop Menu */}
           <div className="hidden lg:flex items-center h-full border-l border-zinc-800">
-            <NavDropdown title="Protocol">
-              <MegaMenuItem
-                icon={Activity}
-                title="Stream"
-                desc="Private payroll & token vesting."
-                status="in-development"
-              />
-              <MegaMenuItem
-                icon={RefreshCcw}
-                title="Lend"
-                desc="Zero-knowledge collateralized loans."
-                status="in-development"
-              />
-              <MegaMenuItem
-                icon={Layers}
-                title="Trade"
-                desc="Dark pool swaps on Solana."
-                status="planned"
-              />
-              <MegaMenuItem
-                icon={Wallet}
-                title="Earn"
-                desc="Shielded liquidity provision."
-                status="planned"
-              />
-            </NavDropdown>
-            <NavDropdown title="Developers">
-              <MegaMenuItem
-                icon={Terminal}
-                title="Documentation"
-                desc="Integrate the Zenlok SDK."
-              />
-              <MegaMenuItem
-                icon={FileCode}
-                title="Contracts"
-                desc="SPL Program Addresses."
-              />
-              <MegaMenuItem
-                icon={Key}
-                title="Audits"
-                desc="Security reports by OtterSec."
-              />
-            </NavDropdown>
-            <NavDropdown title="Governance">
-              <MegaMenuItem
-                icon={Globe}
-                title="DAO"
-                desc="Realms Governance."
-              />
-              <MegaMenuItem
-                icon={Database}
-                title="Treasury"
-                desc="On-chain asset holdings."
-              />
-            </NavDropdown>
+            {MENU_ITEMS.map((section) => (
+              <NavDropdown key={section.title} title={section.title}>
+                {section.items.map((item) => (
+                  <MegaMenuItem
+                    key={item.title}
+                    icon={item.icon}
+                    title={item.title}
+                    desc={item.desc}
+                    status={item.status as StatusType}
+                  />
+                ))}
+              </NavDropdown>
+            ))}
           </div>
 
           {/* Spacer */}
@@ -227,13 +310,6 @@ export default function MainLayout({
 
           {/* Actions */}
           <div className="flex items-center gap-6 border-l border-zinc-800 pl-6 h-full">
-            {/* <div className="hidden xl:block text-[10px] font-mono text-zinc-500 text-right leading-tight"> */}
-            {/*   <div className="text-zinc-300">SOLANA MAINNET</div> */}
-            {/*   <div className="flex items-center gap-1 justify-end"> */}
-            {/*     <div className="w-1 h-1 bg-green-500 shadow-[0_0_5px_#22c55e]" />{" "} */}
-            {/*     CONNECTED */}
-            {/*   </div> */}
-            {/* </div> */}
             <Button
               variant="tech"
               className="hidden md:flex h-9"
@@ -255,18 +331,17 @@ export default function MainLayout({
       {/* Mobile Menu Overlay */}
       {mobileMenu && (
         <div className="fixed inset-0 z-40 bg-black pt-20 px-6 overflow-y-auto">
-          <div className="space-y-8">
-            {["Protocol", "Developers", "Governance", "Community"].map(
-              (item) => (
-                <div
-                  key={item}
-                  className="text-4xl font-light border-b border-zinc-800 pb-6 uppercase font-sans"
-                >
-                  {item}
-                </div>
-              ),
-            )}
-            <Button className="w-full text-lg h-16">Connect Wallet</Button>
+          <div className="space-y-8 pb-20">
+            {MENU_ITEMS.map((section) => (
+              <MobileNavDropdown
+                key={section.title}
+                title={section.title}
+                items={section.items}
+              />
+            ))}
+            <div className="pt-8">
+              <Button className="w-full text-lg h-16">Launch App</Button>
+            </div>
           </div>
         </div>
       )}
