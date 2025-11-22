@@ -59,10 +59,10 @@ export default function Hero() {
           </div>
           <div className="relative z-10">
             <div className="text-5xl font-mono text-white font-light mb-2 tracking-tighter">
-              8.42%
+              0%
             </div>
             <div className="h-1 w-full bg-zinc-900 overflow-hidden">
-              <div className="h-full w-[60%] bg-white animate-[shimmer_2s_infinite]" />
+              <div className="h-full w-[0%] bg-white animate-[shimmer_2s_infinite]" />
             </div>
           </div>
         </div>
@@ -71,19 +71,19 @@ export default function Hero() {
           <div className="absolute inset-0 bg-dot-grid opacity-0 group-hover/card:opacity-10 transition-opacity" />
           <div className="flex justify-between items-start relative z-10">
             <div className="text-xs font-mono text-zinc-500 uppercase tracking-widest">
-              Private TVL
+              Public TVL
             </div>
             <Lock className="text-zinc-700 group-hover/card:text-white transition-colors" />
           </div>
           <div className="relative z-10">
             <div className="text-5xl font-mono text-white font-light mb-2 tracking-tighter">
-              $42.9M
+              $0M
             </div>
             <div className="flex gap-1">
-              {[1, 2, 3, 4, 5, 6, 7, 8].map((i) => (
+              {[0, 0, 0, 0, 0, 0, 0, 0, 0, 0].map((i, idx) => (
                 <div
-                  key={i}
-                  className={`h-1 flex-1 transition-all duration-500 ${i < 6 ? "bg-zinc-500" : "bg-zinc-800"}`}
+                  key={idx}
+                  className={`h-1 flex-1 transition-all duration-500 ${i !== 0 ? "bg-zinc-500" : "bg-zinc-800"}`}
                 />
               ))}
             </div>
@@ -96,7 +96,7 @@ export default function Hero() {
               Current Epoch
             </div>
             <div className="text-4xl font-mono text-white font-bold tracking-wider">
-              520
+              0
             </div>
             <div className="text-[10px] font-mono text-zinc-500 mt-2">
               EST. REMAINING: 12H 20M
