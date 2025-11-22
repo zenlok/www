@@ -3,6 +3,7 @@ import { TvlChart } from "@/components/ChartComponents";
 import { GridSection } from "@/components/GridSection";
 import { SectionLabel } from "@/components/SectionLabel";
 import { Button } from "@/components/ui/Button";
+import { StatusBadge } from "@/components/ui/StatusBadge";
 import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/Card";
 
 export default function Lending() {
@@ -41,6 +42,9 @@ export default function Lending() {
 
       <div className="p-12 lg:p-20 order-1 lg:order-2 transition-colors hover:bg-zinc-900/20">
         <SectionLabel number="02" text="Shielded Lending" />
+        <div className="mb-6">
+          <StatusBadge status="in-development" />
+        </div>
         <h2 className="text-4xl lg:text-5xl font-bold uppercase tracking-tighter mb-6 text-white">
           Borrow <br />
           Without Exposure.

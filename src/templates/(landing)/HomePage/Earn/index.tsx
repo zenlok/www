@@ -3,6 +3,7 @@ import { VolumeBarChart } from "@/components/ChartComponents";
 import { GridSection } from "@/components/GridSection";
 import { SectionLabel } from "@/components/SectionLabel";
 import { Button } from "@/components/ui/Button";
+import { StatusBadge } from "@/components/ui/StatusBadge";
 import { Card, CardContent, CardHeader } from "@/components/ui/Card";
 
 export default function Earn() {
@@ -57,6 +58,9 @@ export default function Earn() {
 
       <div className="order-1 lg:order-2 p-12 lg:p-24 border-b lg:border-b-0 lg:border-l border-zinc-800 transition-colors hover:bg-zinc-900/20">
         <SectionLabel number="04" text="Shielded Earn" />
+        <div className="mb-6">
+          <StatusBadge status="planned" />
+        </div>
         <h2 className="text-4xl lg:text-5xl font-bold uppercase tracking-tighter mb-6 text-white">
           Private <br /> Yield.
         </h2>

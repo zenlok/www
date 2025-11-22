@@ -2,12 +2,16 @@ import { ArrowUpRight, Percent } from "lucide-react";
 import { GridSection } from "@/components/GridSection";
 import { SectionLabel } from "@/components/SectionLabel";
 import { Button } from "@/components/ui/Button";
+import { StatusBadge } from "@/components/ui/StatusBadge";
 
 export default function Trade() {
   return (
     <GridSection className="grid grid-cols-1 lg:grid-cols-2 bg-black text-white">
       <div className="p-12 lg:p-24 border-b lg:border-b-0 lg:border-r border-zinc-800 transition-colors hover:bg-zinc-900/20">
         <SectionLabel number="03" text="Private Swaps" />
+        <div className="mb-6">
+          <StatusBadge status="planned" />
+        </div>
         <h2 className="text-4xl lg:text-5xl font-bold uppercase tracking-tighter mb-6 text-white">
           Zero Slippage <br /> Dark Pool.
         </h2>

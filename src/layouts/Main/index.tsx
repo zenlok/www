@@ -21,6 +21,7 @@ import Image from "next/image";
 import Link from "next/link";
 import React, { useEffect, useState } from "react";
 import { Button } from "@/components/ui/Button";
+import { StatusBadge, type StatusType } from "@/components/ui/StatusBadge";
 
 const NavDropdown = ({
   title,
@@ -78,10 +79,12 @@ const MegaMenuItem = ({
   icon: Icon,
   title,
   desc,
+  status,
 }: {
   icon: LucideIcon;
   title: string;
   desc: string;
+  status?: StatusType;
 }) => (
   <a
     href="#"
@@ -93,6 +96,7 @@ const MegaMenuItem = ({
     <div>
       <div className="text-sm font-bold text-zinc-300 group-hover:text-white mb-1 flex items-center gap-2">
         {title}
+        {status && <StatusBadge status={status} />}
         <ArrowRight className="w-3 h-3 opacity-0 -translate-x-2 group-hover:opacity-100 group-hover:translate-x-0 transition-all" />
       </div>
       <p className="text-[10px] text-zinc-500 leading-relaxed font-mono uppercase">
@@ -166,21 +170,25 @@ export default function MainLayout({
                 icon={Activity}
                 title="Stream"
                 desc="Private payroll & token vesting."
+                status="in-development"
               />
               <MegaMenuItem
                 icon={RefreshCcw}
                 title="Lend"
                 desc="Zero-knowledge collateralized loans."
+                status="in-development"
               />
               <MegaMenuItem
                 icon={Layers}
                 title="Trade"
                 desc="Dark pool swaps on Solana."
+                status="planned"
               />
               <MegaMenuItem
                 icon={Wallet}
                 title="Earn"
                 desc="Shielded liquidity provision."
+                status="planned"
               />
             </NavDropdown>
             <NavDropdown title="Developers">
