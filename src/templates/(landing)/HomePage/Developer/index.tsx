@@ -33,14 +33,12 @@ export default function Developer() {
         </div>
       </div>
 
-      <div className="bg-[#050505] p-8 font-mono text-xs md:text-sm overflow-x-auto flex items-center relative">
+      <div className="bg-card p-8 font-mono text-xs md:text-sm overflow-x-auto flex items-center relative">
         <div className="absolute top-0 right-0 p-2 opacity-50">
           <Code2 size={48} className="text-zinc-800" />
         </div>
         <div className="w-full relative z-10">
-          <div className="text-zinc-500 mb-4">
-            &#47;&#47; Initialize private transfer
-          </div>
+          <div className="text-zinc-500 mb-4">&#47;&#47; Initialize client</div>
           <div className="space-y-2">
             <div className="text-purple-400">
               const <span className="text-blue-300">client</span> ={" "}
@@ -49,35 +47,45 @@ export default function Developer() {
             </div>
             <br />
             <div className="text-zinc-500">
-              &#47;&#47; Create zero-knowledge proof
+              &#47;&#47; Create private vesting stream
             </div>
             <div className="text-purple-400">
-              const <span className="text-blue-300">proof</span> ={" "}
-              <span className="text-yellow-300">await</span> client.prove(
+              const <span className="text-blue-300">stream</span> ={" "}
+              <span className="text-yellow-300">await</span>{" "}
+              client.vesting.create(
               {"{"}
             </div>
             <div className="pl-4 text-blue-300">
               token: <span className="text-green-300">'USDC'</span>,
             </div>
             <div className="pl-4 text-blue-300">
-              amount: <span className="text-orange-300">1000</span>,
+              amount: <span className="text-orange-300">10000</span>,
             </div>
             <div className="pl-4 text-blue-300">
-              recipient: <span className="text-green-300">'0x...'</span>
+              recipient: <span className="text-green-300">'0x...'</span>,
+            </div>
+            <div className="pl-4 text-blue-300">
+              cliff: <span className="text-green-300">'3m'</span>
             </div>
             <div className="text-purple-400">{"}"});</div>
             <br />
-            <div className="text-zinc-500">
-              &#47;&#47; Broadcast via relayer
-            </div>
+            <div className="text-zinc-500">&#47;&#47; Await computation</div>
             <div className="text-purple-400">
-              const <span className="text-blue-300">tx</span> ={" "}
-              <span className="text-yellow-300">await</span>{" "}
-              client.relay(proof);
+              const <span className="text-blue-300">comp</span> ={" "}
+              <span className="text-yellow-300">await</span> stream.compute();
+            </div>
+            <br />
+            <div className="text-zinc-500">
+              &#47;&#47; Log tx and comp finalize tx
             </div>
             <div className="text-purple-400">
               console.<span className="text-yellow-300">log</span>(
-              <span className="text-green-300">'Tx Hash:'</span>, tx.hash);
+              <span className="text-green-300">'Tx:'</span>, stream.hash);
+            </div>
+            <div className="text-purple-400">
+              console.<span className="text-yellow-300">log</span>(
+              <span className="text-green-300">'Finalize:'</span>,
+              comp.finalizeTx);
             </div>
           </div>
         </div>
