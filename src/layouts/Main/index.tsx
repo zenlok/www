@@ -455,16 +455,16 @@ export default function MainLayout({
               <div className="flex gap-8">
                 <span>&copy; {new Date().getFullYear()} Zenlok Protocol</span>
               </div>
-              <div className="flex items-center gap-4">
-                <span className="flex items-center gap-2">
-                  <div className="w-1.5 h-1.5 bg-green-900 rounded-full" /> API
-                  Status: OK
-                </span>
-                <span className="flex items-center gap-2">
-                  <div className="w-1.5 h-1.5 bg-green-900 rounded-full" />{" "}
-                  Bridge Status: OK
-                </span>
-              </div>
+              {/* <div className="flex items-center gap-4"> */}
+              {/*   <span className="flex items-center gap-2"> */}
+              {/*     <div className="w-1.5 h-1.5 bg-green-900 rounded-full" /> API */}
+              {/*     Status: OK */}
+              {/*   </span> */}
+              {/*   <span className="flex items-center gap-2"> */}
+              {/*     <div className="w-1.5 h-1.5 bg-green-900 rounded-full" />{" "} */}
+              {/*     Bridge Status: OK */}
+              {/*   </span> */}
+              {/* </div> */}
             </div>
           </div>
         </footer>
