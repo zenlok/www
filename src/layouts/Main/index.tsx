@@ -4,7 +4,6 @@ import {
   Activity,
   ArrowRight,
   ChevronDown,
-  Code2,
   Database,
   FileCode,
   Globe,
@@ -21,6 +20,7 @@ import Image from "next/image";
 import Link from "next/link";
 import React, { useEffect, useState } from "react";
 import { Button } from "@/components/ui/Button";
+import Icon from "@/components/ui/Icon";
 import { StatusBadge, type StatusType } from "@/components/ui/StatusBadge";
 
 type MenuItem = {
@@ -373,22 +373,28 @@ export default function MainLayout({
                 </p>
                 <div className="flex gap-4">
                   <a
-                    href="#"
+                    href="https://github.com/zenlok"
                     className="w-10 h-10 border border-zinc-800 flex items-center justify-center hover:bg-white hover:text-black transition-colors text-zinc-400"
+                    target="_blank"
+                    rel="noopener noreferrer"
                   >
-                    <Globe size={18} />
+                    <Icon size={18} name="dinkie-icons:github" />
                   </a>
                   <a
-                    href="#"
+                    href="https://x.com/zenlokio"
                     className="w-10 h-10 border border-zinc-800 flex items-center justify-center hover:bg-white hover:text-black transition-colors text-zinc-400"
+                    target="_blank"
+                    rel="noopener noreferrer"
                   >
-                    <Terminal size={18} />
+                    <Icon size={18} name="dinkie-icons:twitter-alt" />
                   </a>
                   <a
-                    href="#"
+                    href="https://t.me/zenlokio"
                     className="w-10 h-10 border border-zinc-800 flex items-center justify-center hover:bg-white hover:text-black transition-colors text-zinc-400"
+                    target="_blank"
+                    rel="noopener noreferrer"
                   >
-                    <Code2 size={18} />
+                    <Icon size={18} name="dinkie-icons:telegram-alt" />
                   </a>
                 </div>
               </div>
