@@ -399,38 +399,22 @@ export default function MainLayout({
                 </h4>
                 <ul className="space-y-4 text-zinc-400 font-light text-sm">
                   <li>
-                    <a
-                      href="#"
-                      className="hover:text-white transition-colors flex items-center gap-2"
-                    >
-                      <span className="w-1 h-1 bg-zinc-700 rounded-full opacity-0 hover:opacity-100" />{" "}
+                    <a href="#" className="hover:text-white transition-colors">
                       Governance
                     </a>
                   </li>
                   <li>
-                    <a
-                      href="#"
-                      className="hover:text-white transition-colors flex items-center gap-2"
-                    >
-                      <span className="w-1 h-1 bg-zinc-700 rounded-full opacity-0 hover:opacity-100" />{" "}
+                    <a href="#" className="hover:text-white transition-colors">
                       Bug Bounty
                     </a>
                   </li>
                   <li>
-                    <a
-                      href="#"
-                      className="hover:text-white transition-colors flex items-center gap-2"
-                    >
-                      <span className="w-1 h-1 bg-zinc-700 rounded-full opacity-0 hover:opacity-100" />{" "}
+                    <a href="#" className="hover:text-white transition-colors">
                       Grants Program
                     </a>
                   </li>
                   <li>
-                    <a
-                      href="#"
-                      className="hover:text-white transition-colors flex items-center gap-2"
-                    >
-                      <span className="w-1 h-1 bg-zinc-700 rounded-full opacity-0 hover:opacity-100" />{" "}
+                    <a href="#" className="hover:text-white transition-colors">
                       Brand Assets
                     </a>
                   </li>
