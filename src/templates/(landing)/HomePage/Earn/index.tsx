@@ -3,8 +3,8 @@ import { VolumeBarChart } from "@/components/ChartComponents";
 import { GridSection } from "@/components/GridSection";
 import { SectionLabel } from "@/components/SectionLabel";
 import { Button } from "@/components/ui/Button";
-import { StatusBadge } from "@/components/ui/StatusBadge";
 import { Card, CardContent, CardHeader } from "@/components/ui/Card";
+import { StatusBadge } from "@/components/ui/StatusBadge";
 
 export default function Earn() {
   return (

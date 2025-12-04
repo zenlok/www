@@ -1,0 +1,17 @@
+diff --git a/node_modules/@reown/appkit-adapter-solana/dist/esm/src/utils/chains.js b/node_modules/@reown/appkit-adapter-solana/dist/esm/src/utils/chains.js
+index 19ddb64..21bc612 100644
+--- a/node_modules/@reown/appkit-adapter-solana/dist/esm/src/utils/chains.js
++++ b/node_modules/@reown/appkit-adapter-solana/dist/esm/src/utils/chains.js
+@@ -1,9 +1,10 @@
+ import {} from '@reown/appkit-common';
+-import { solana, solanaDevnet, solanaTestnet } from '@reown/appkit/networks';
++import { solana, solanaDevnet, solanaTestnet, solanaLocalnet } from '@reown/appkit/networks';
+ export const solanaChains = {
+     'solana:mainnet': solana,
+     'solana:testnet': solanaTestnet,
+-    'solana:devnet': solanaDevnet
++    'solana:devnet': solanaDevnet,
++    'solana:localnet': solanaLocalnet,
+ };
+ export function getStandardChain(caipNetworkId) {
+     const standardChain = Object.entries(solanaChains).find(([_, chain]) => chain.caipNetworkId === caipNetworkId);

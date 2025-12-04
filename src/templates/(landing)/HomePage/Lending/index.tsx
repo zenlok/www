@@ -3,8 +3,8 @@ import { TvlChart } from "@/components/ChartComponents";
 import { GridSection } from "@/components/GridSection";
 import { SectionLabel } from "@/components/SectionLabel";
 import { Button } from "@/components/ui/Button";
-import { StatusBadge } from "@/components/ui/StatusBadge";
 import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/Card";
+import { StatusBadge } from "@/components/ui/StatusBadge";
 
 export default function Lending() {
   return (

@@ -1,5 +1,6 @@
 import type { Metadata } from "next";
 import MainLayout from "@/layouts/Main";
+import { Providers } from "@/providers";
 import "./globals.css";
 
 export const metadata: Metadata = {
@@ -53,7 +54,9 @@ export default function RootLayout({
         />
       </head>
       <body className={`antialiased`}>
-        <MainLayout>{children}</MainLayout>
+        <Providers>
+          <MainLayout>{children}</MainLayout>
+        </Providers>
       </body>
     </html>
   );

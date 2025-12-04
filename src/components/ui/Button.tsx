@@ -1,8 +1,20 @@
-interface ButtonProps extends React.ButtonHTMLAttributes<HTMLButtonElement> {
-  variant?: "primary" | "secondary" | "outline" | "ghost" | "tech";
-  size?: "sm" | "md" | "lg";
+"use client";
+
+import Link from "next/link";
+
+export interface ButtonProps
+  extends React.ButtonHTMLAttributes<HTMLButtonElement> {
+  variant?:
+    | "primary"
+    | "secondary"
+    | "outline"
+    | "ghost"
+    | "tech"
+    | "destructive";
+  size?: "sm" | "md" | "lg" | "icon";
   className?: string;
   icon?: React.ReactNode;
+  href?: string;
 }
 
 export const Button: React.FC<ButtonProps> = ({
@@ -11,6 +23,7 @@ export const Button: React.FC<ButtonProps> = ({
   size = "md",
   className = "",
   icon,
+  href,
   ...props
 }) => {
   const baseStyles =
@@ -24,20 +37,20 @@ export const Button: React.FC<ButtonProps> = ({
       "border border-zinc-700 bg-transparent text-zinc-300 hover:border-white hover:text-white hover:bg-white/5",
     ghost: "hover:bg-zinc-900 text-zinc-400 hover:text-white",
     tech: "bg-black border border-zinc-800 text-white hover:border-white hover:bg-zinc-900",
+    destructive:
+      "bg-red-900/20 text-red-500 border border-red-900/50 hover:bg-red-900/40 hover:border-red-500",
   };
 
   const sizes = {
     sm: "h-8 px-3 text-[10px]",
     md: "h-11 px-6 text-xs",
     lg: "h-14 px-8 text-sm",
+    icon: "h-10 w-10 p-0",
   };
 
-  return (
-    <button
-      className={`${baseStyles} ${variants[variant]} ${sizes[size]} ${className}`}
-      style={{ borderRadius: 0 }}
-      {...props}
-    >
+  const combinedClassName = `${baseStyles} ${variants[variant]} ${sizes[size]} ${className}`;
+  const commonContent = (
+    <>
       {/* Tech Hover Effect Decoration */}
       {variant === "tech" && (
         <>
@@ -58,6 +71,29 @@ export const Button: React.FC<ButtonProps> = ({
           </span>
         )}
       </span>
+    </>
+  );
+
+  if (href) {
+    return (
+      <Link
+        href={href}
+        className={combinedClassName}
+        style={{ borderRadius: 0 }}
+        {...(props as React.AnchorHTMLAttributes<HTMLAnchorElement>)}
+      >
+        {commonContent}
+      </Link>
+    );
+  }
+
+  return (
+    <button
+      className={combinedClassName}
+      style={{ borderRadius: 0 }}
+      {...props}
+    >
+      {commonContent}
     </button>
   );
 };
